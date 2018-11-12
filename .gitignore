@@ -7,3 +7,9 @@
 /pkg/
 /spec/reports/
 /tmp/
+
+# Ruby version and gemset files
+*.ruby-*
+
+# Sublime project files
+*sublime-*

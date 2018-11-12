@@ -41,7 +41,7 @@ class Meli
 
         uri = make_path(OAUTH_URL, params)
 
-        req = Net::HTTP::Post.new(uri.path)
+        req = Net::HTTP::Post.new(uri.to_s)
         req['Accept'] = 'application/json'
         req['User-Agent'] = SDK_VERSION
         req['Content-Type'] = "application/x-www-form-urlencoded"
