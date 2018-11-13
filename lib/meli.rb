@@ -38,11 +38,10 @@ class Meli
 
     def authorize(code, redirect_URI)
         params = { :grant_type => 'authorization_code', :client_id => @app_id, :client_secret => @secret, :code => code, :redirect_uri => redirect_URI}
-        binding.pry
 
         uri = make_path(OAUTH_URL, params)
 
-        req = Net::HTTP::Post.new(uri.to_s)
+        req = Net::HTTP::Post.new(uri.path)
         req['Accept'] = 'application/json'
         req['User-Agent'] = SDK_VERSION
         req['Content-Type'] = "application/x-www-form-urlencoded"
