@@ -38,6 +38,7 @@ class Meli
 
     def authorize(code, redirect_URI)
         params = { :grant_type => 'authorization_code', :client_id => @app_id, :client_secret => @secret, :code => code, :redirect_uri => redirect_URI}
+        binding.pry
 
         uri = make_path(OAUTH_URL, params)
 
