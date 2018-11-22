@@ -65,7 +65,6 @@ class Meli
             # response code isn't a 200; raise an exception
             response.error!
         end
-
     end
 
     def get_refresh_token()
@@ -109,6 +108,7 @@ class Meli
     end
 
     def get(path, params = {})
+        params['access_token'] = @access_token if @access_token
         uri = make_path(path, params)
         req = Net::HTTP::Get.new("#{uri.path}?#{uri.query}")
         execute req
@@ -117,6 +117,7 @@ class Meli
     def post(path, body, params = {})
         uri = make_path(path, params)
         req = Net::HTTP::Post.new("#{uri.path}?#{uri.query}")
+        params['access_token'] = @access_token if @access_token
         req.set_form_data(params)
         req.body = body.to_json unless body.nil?
         execute req
@@ -125,18 +126,21 @@ class Meli
     def put(path, body, params = {})
         uri = make_path(path, params)
         req = Net::HTTP::Put.new("#{uri.path}?#{uri.query}")
+        params['access_token'] = @access_token if @access_token
         req.set_form_data(params)
         req.body = body.to_json unless body.nil?
         execute req
     end
 
     def delete(path, params = {})
+        params['access_token'] = @access_token if @access_token
         uri = make_path(path, params)
         req = Net::HTTP::Delete.new("#{uri.path}?#{uri.query}")
         execute req
     end
 
     def options(path, params = {})
+        params['access_token'] = @access_token if @access_token
         uri = make_path(path, params)
         req = Net::HTTP::Options.new("#{uri.path}?#{uri.query}")
         execute req
