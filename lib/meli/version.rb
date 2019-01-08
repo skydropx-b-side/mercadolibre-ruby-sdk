@@ -1,3 +1,3 @@
 require 'meli'
 
-Meli::VERSION = "1.0.3"
+Meli::VERSION = "1.0.4"

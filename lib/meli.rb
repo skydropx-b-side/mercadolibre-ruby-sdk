@@ -116,18 +116,18 @@ class Meli
     end
 
     def post(path, body, params = {})
+        params['access_token'] = @access_token if @access_token
         uri = make_path(path, params)
         req = Net::HTTP::Post.new("#{uri.path}?#{uri.query}")
-        params['access_token'] = @access_token if @access_token
         req.set_form_data(params)
         req.body = body.to_json unless body.nil?
         execute req
     end
 
     def put(path, body, params = {})
+        params['access_token'] = @access_token if @access_token
         uri = make_path(path, params)
         req = Net::HTTP::Put.new("#{uri.path}?#{uri.query}")
-        params['access_token'] = @access_token if @access_token
         req.set_form_data(params)
         req.body = body.to_json unless body.nil?
         execute req
