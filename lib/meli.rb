@@ -105,7 +105,7 @@ class Meli
         req['User-Agent'] = SDK_VERSION
         req['Content-Type'] = 'application/json'
         response = @https.request(req)
-        JSON.parse(response.body || {})
+        JSON.parse(response.body || "{}")
     end
 
     def get(path, params = {})
