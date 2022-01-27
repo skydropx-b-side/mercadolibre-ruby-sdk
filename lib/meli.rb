@@ -149,7 +149,7 @@ class Meli
 
 private
     def to_url_params(params)
-      URI.escape(params.collect{|k,v| "#{k}=#{v}"}.join('&'))
+      URI.encode_www_form_component(params.collect{|k,v| "#{k}=#{v}"}.join('&'))
     end
 
     def make_path(path, params = {})
